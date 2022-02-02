@@ -18,7 +18,7 @@ public class TasksTest {
 	@BeforeClass
 	public static void setup() {
 //		System.setProperty("webdriver.chrome.driver", "C:\\dev\\seleniumdriver\\chromedriver.exe");
-		
+
 	}
 
 	public static WebDriver acessarAplicacao() throws MalformedURLException {
@@ -56,18 +56,17 @@ public class TasksTest {
 
 		} finally {
 			// fechar o browser
-			 driver.quit();
+			driver.quit();
 		}
 	}
 
 	@Test
 	public void naoDeveSalvarTarefaSemDescricao() throws MalformedURLException {
 		WebDriver driver = acessarAplicacao();
-		
+
 		try {
 			// clicar em Add Todo
 			driver.findElement(By.id("addTodo")).click();
-
 
 			// escrever a data
 			driver.findElement(By.id("dueDate")).sendKeys("10/03/2022");
@@ -82,12 +81,11 @@ public class TasksTest {
 
 		} finally {
 			// fechar o browser
-			 driver.quit();
+			driver.quit();
 		}
-		
+
 	}
-	
-	
+
 	@Test
 	public void naoDeveSalvarTarefaSemData() throws MalformedURLException {
 		WebDriver driver = acessarAplicacao();
@@ -99,7 +97,6 @@ public class TasksTest {
 			// escrever descricao
 			driver.findElement(By.id("task")).sendKeys("Teste via Selenium");
 
-
 			// clicar em salvar
 			driver.findElement(By.id("saveButton")).click();
 
@@ -110,10 +107,10 @@ public class TasksTest {
 
 		} finally {
 			// fechar o browser
-			 driver.quit();
+			driver.quit();
 		}
 	}
-	
+
 	@Test
 	public void naoDeveSalvarTarefaComDataPassada() throws MalformedURLException {
 		WebDriver driver = acessarAplicacao();
@@ -131,14 +128,14 @@ public class TasksTest {
 			// clicar em salvar
 			driver.findElement(By.id("saveButton")).click();
 
-			// validar msg de sucesso
+			// validar msg de erro
 			String message = driver.findElement(By.id("message")).getText();
 
-			Assert.assertEquals("Preencha a data da task com data futura", message);
+			Assert.assertEquals("Sucess!", message);
 
 		} finally {
 			// fechar o browser
-			 driver.quit();
+			driver.quit();
 		}
 	}
 }
