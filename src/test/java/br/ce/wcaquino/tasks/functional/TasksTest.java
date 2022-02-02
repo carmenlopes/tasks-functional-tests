@@ -131,7 +131,7 @@ public class TasksTest {
 			// validar msg de erro
 			String message = driver.findElement(By.id("message")).getText();
 
-			Assert.assertEquals("Sucess!", message);
+			Assert.assertEquals("Preencha a data da task com data futura", message);
 
 		} finally {
 			// fechar o browser
